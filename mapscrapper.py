@@ -34,7 +34,7 @@ def scroll_down():
 locations = ['red sea', 'galapagos', 'palau', 'sipadan', 'saipan', 'maldives', 'koh tao', 'key largo', 'bohol', 'cebu', 'malapascua', 'el nido', 'sabang', 'lambongan island', 'lombok', 'komodo']
 
 for location in locations:
-    url = f"https://www.google.com/search?q={location} dive point site &source=lnms&tbm=isch&sa=X&ved=2ahUKEwjgwPKzqtXuAhWW62EKHRjtBvcQ_AUoAXoECBEQAw&biw=768&bih=712"
+    url = f"https://www.google.com/search?q={location} dive point map &source=lnms&tbm=isch&sa=X&ved=2ahUKEwjgwPKzqtXuAhWW62EKHRjtBvcQ_AUoAXoECBEQAw&biw=768&bih=712"
 
     service = Service('chromedriver/chromedriver')
     driver = webdriver.Chrome(service=service)
@@ -58,11 +58,11 @@ for location in locations:
         except:
             imgUrl = i["data-src"]
 
-        if not os.path.exists(f"maps/{location}"):
-            os.makedirs(f"maps/{location}", exist_ok=True)
+        if not os.path.exists(f"maps_new/{location}"):
+            os.makedirs(f"maps_new/{location}", exist_ok=True)
         try:
             with urllib.request.urlopen(imgUrl) as f:
-                with open(f"maps/{location}/" + str(location) + '_' + str(n) + '.jpg', 'wb') as h:
+                with open(f"maps_new/{location}/" + str(location) + '_' + str(n) + '.png', 'wb') as h:
                     img = f.read()
                     h.write(img)
         except:
